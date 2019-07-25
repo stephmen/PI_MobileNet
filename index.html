@@ -96,31 +96,31 @@
       canvasD.width = w;
       canvasD.height = h;
       ctxD.drawImage(video, 0, 0, w, h);
-      let data = ctxD.getImageData(0, 0, w, h).data;
-      for (var y = 0; y < h; y += sample_size) {
-        for (var x = 0; x < w; x += sample_size) {
-          var pos = (x + y * w) * 4;
-          var r = data[pos];
-          var g = data[pos + 1];
-          var b = data[pos + 2];
-          if (
-            previous_frame[pos] &&
-            Math.abs(previous_frame[pos] - r) > threshold
-          ) {
-            ctxD.fillStyle = "rgb(" + 0 + "," + 0 + "," + 150 + ")";
-            ctxD.fillRect(x, y, sample_size, sample_size);
-            alert = alert + 1;
-          }
-          // store these colour values to compare to the next frame
-          previous_frame[pos] = r;
-        }
-      }
-      if (alert > 20 && snapShotChecked === true) {
-        console.log(alert);
-        startPhoto()
-      }
+      // let data = ctxD.getImageData(0, 0, w, h).data;
+      // for (var y = 0; y < h; y += sample_size) {
+      //   for (var x = 0; x < w; x += sample_size) {
+      //     var pos = (x + y * w) * 4;
+      //     var r = data[pos];
+      //     var g = data[pos + 1];
+      //     var b = data[pos + 2];
+      //     if (
+      //       previous_frame[pos] &&
+      //       Math.abs(previous_frame[pos] - r) > threshold
+      //     ) {
+      //       ctxD.fillStyle = "rgb(" + 0 + "," + 0 + "," + 150 + ")";
+      //       ctxD.fillRect(x, y, sample_size, sample_size);
+      //       alert = alert + 1;
+      //     }
+      //     // store these colour values to compare to the next frame
+      //     previous_frame[pos] = r;
+      //   }
+      // }
+      // if (alert > 20 && snapShotChecked === true) {
+      //   console.log(alert);
+      //   startPhoto()
+      // }
 
-      alert = 0;
+      //alert = 0;
     }
 
     var startPhoto = _.throttle(function takePhoto() {
