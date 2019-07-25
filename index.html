@@ -44,7 +44,7 @@
       var playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
-          .then(_ => { StreamToCanvas2D() })
+          .then(_ => { video.addEventListener("progress", StreamToCanvas2D) })
           .catch(error => {
             console.log(error);
           });
