@@ -2,24 +2,20 @@
 <html lang="en">
   <head>
     <base href="/" />
-    <title>PI_Motion</title>
+    <title>PI_Mobilenet
+    </title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css" />
   </head>
   <script
     type="text/javascript"
     src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
   ></script>
-  <script src="lodash.js"></script>
-
   <body>
     <h1>
       MobileNet Detect <br />
       <button>Start</button>
     </h1>
   <script>
-
-
-
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
@@ -31,9 +27,8 @@
     const video = document.createElement("video");
     let canvasD = document.createElement("canvas");
     let ctxD = canvasD.getContext("2d");
-    //const pellicule = document.createElement("div");
     document.body.appendChild(canvasD).setAttribute("id", "destination");
-    //document.body.appendChild(pellicule).setAttribute("class", "strip");
+
 
     // Streaming to Canvas from Raspberry PI with Express Socket
     // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
@@ -49,13 +44,13 @@
       var playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
-          .then(_ => {})
+          .then(_ => { StreamToCanvas2D() })
           .catch(error => {
             console.log(error);
           });
       }
     }
-    video.addEventListener("progress", StreamToCanvas2D);
+    //video.addEventListener("progress", StreamToCanvas2D);
 
     function StreamToCanvas2D() {
       const w = video.videoWidth;
