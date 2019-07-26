@@ -35,7 +35,7 @@
     //Streaming to <video>(captureStream)
     videoConnect().then(stream = canvas.captureStream())
     .then(videoToCanvas(stream))
-    .then(video.addEventListener("progress", StreamToCanvas2D);)
+    
 
     function videoToCanvas (stream) {
     if (stream !== null) {
@@ -44,11 +44,7 @@
       if (playPromise !== undefined) {
         playPromise
           .then(_ => {
-            canvasD.width = w;
-            canvasD.height = h;
-            ctxD.drawImage(video, 0, 0, w, h);})
-            .catch(error => {
-            console.log(error);
+            video.addEventListener("progress", StreamToCanvas2D)
           });
       }
     }
