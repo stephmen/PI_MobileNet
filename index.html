@@ -11,7 +11,10 @@
     <button>Start</button>
   <script>
     const button = document.querySelector("button");
-    button.addEventListener("click", video.play());
+    button.addEventListener("click", function() {
+      console.log("button worked");
+      video.play();
+    });
 
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
