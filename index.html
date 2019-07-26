@@ -31,7 +31,6 @@
     const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
     return new Promise (resolve => wsavc.connect(protocol + "//" + window.location.host + "/video-stream")
     )}
-
     //Streaming to <video>(captureStream)
     videoConnect().then(stream = canvas.captureStream())
     .then(videoToCanvas(stream))
@@ -39,8 +38,8 @@
 
     function videoToCanvas (stream) {
       video.srcObject = stream;
-      video.play();
-      video.addEventListener("progress", StreamToCanvas2D)
+      video.play().then(
+      video.addEventListener("progress", StreamToCanvas2D))
           };
 
     function StreamToCanvas2D() {
