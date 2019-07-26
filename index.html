@@ -32,54 +32,41 @@
 
     // Streaming to Canvas from Raspberry PI with Express Socket
     // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
-    const wsavc = new WSAvcPlayer(canvas, "webgl");
+      async function getVideo () {
+      const wsavc = new WSAvcPlayer(canvas, "webgl");
     const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
-    wsavc.connect(protocol + "//" + window.location.host + "/video-stream");
-
+    await wsavc.connect(protocol + "//" + window.location.host + "/video-stream");
+      }
     //Streaming to <video>(captureStream)
-
-      const stream = canvas.captureStream();
-      if (stream !== null) {
-        video.srcObject = stream;
-        var playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise
+    getVideo().then(
+    const stream = canvas.captureStream();
+    if (stream !== null) {
+      video.srcObject = stream;
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
           .then(_ => {
             canvasD.width = w;
             canvasD.height = h;
             ctxD.drawImage(video, 0, 0, w, h);})
             .catch(error => {
-              console.log(error);
-            });
-          }
-        }
-        video.addEventListener("progress", StreamToCanvas2D);
-
-        async function setupWebcam() {
-          return new Promise((resolve, reject) => {
-            if (navigator.getUserMedia) {
-              navigator.getUserMedia({video: true},
-                stream => {
-                  webcamElement.srcObject = stream;
-                  webcamElement.addEventListener('loadeddata',  () => resolve(), false);
-                },
-                error => reject());
-            } else {
-              reject();
-            }
+            console.log(error);
           });
-        }
-        function StreamToCanvas2D() {
-          const w = video.videoWidth;
-          const h = video.videoHeight;
-          canvasD.width = w;
-          canvasD.height = h;
-          ctxD.drawImage(video, 0, 0, w, h);
-        }
-        </script>
+      }
+    }
+    )
+    video.addEventListener("progress", StreamToCanvas2D);
+
+    function StreamToCanvas2D() {
+      const w = video.videoWidth;
+      const h = video.videoHeight;
+      canvasD.width = w;
+      canvasD.height = h;
+      ctxD.drawImage(video, 0, 0, w, h);
+
+    }
 
 
   </script>
 </html>
 
-<script>
