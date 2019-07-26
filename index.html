@@ -33,7 +33,9 @@
     )}
 
     //Streaming to <video>(captureStream)
-    videoConnect().then(stream = canvas.captureStream()).then(videoToCanvas(stream))
+    videoConnect().then(stream = canvas.captureStream())
+    .then(videoToCanvas(stream))
+    .then(video.addEventListener("progress", StreamToCanvas2D);)
 
     function videoToCanvas (stream) {
     if (stream !== null) {
@@ -50,7 +52,7 @@
           });
       }
     }
-    video.addEventListener("progress", StreamToCanvas2D);
+
   }
     function StreamToCanvas2D() {
       const w = video.videoWidth;
