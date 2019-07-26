@@ -2,25 +2,16 @@
 <html lang="en">
   <head>
     <base href="/" />
-    <title>PI_Mobilenet
-    </title>
+    <title>PI_Mobilenet</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css" />
   </head>
-  <script
-    type="text/javascript"
-    src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"
-  ></script>
+  <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
   <body>
-    <h1>
-      MobileNet Detect <br />
-      <button>Start</button>
-    </h1>
+    <h1>MobileNet Detect</h1>
+    <button>Start</button>
   <script>
     const button = document.querySelector("button");
-    button.addEventListener("click", function() {
-      console.log("button worked");
-      video.play();
-    });
+    button.addEventListener("click", video.play());
 
     //Receiving <canvas> from H264(Rasberry PI Format) only loaded in memoy
     const canvas = document.createElement("canvas");
@@ -33,7 +24,6 @@
     // Streaming to Canvas from Raspberry PI with Express Socket
     // <canvas> WEBGL(H264) This Canvas is not showing up on page it runs in the background
     function videoConnect () {
-
     const wsavc = new WSAvcPlayer(canvas, "webgl");
     const protocol = window.location.protocol === "http:" ? "ws:" : "wss:";
     return new Promise (resolve => wsavc.connect(protocol + "//" + window.location.host + "/video-stream")
