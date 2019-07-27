@@ -41,7 +41,7 @@
       video.srcObject = stream;
       video.load()
       video.play().then(
-      video.addEventListener("progress", StreamToCanvas2D))
+      video.addEventListener("canplay", StreamToCanvas2D))
           };
 
     function StreamToCanvas2D() {
