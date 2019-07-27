@@ -22,6 +22,7 @@
     let canvasD = document.createElement("canvas");
     let ctxD = canvasD.getContext("2d");
     document.body.appendChild(canvasD).setAttribute("id", "destination");
+    document.body.appendChild(video).setAttribute("id", "destination");
 
 
     // Streaming to Canvas from Raspberry PI with Express Socket
@@ -41,7 +42,7 @@
       video.srcObject = stream;
       video.load()
       video.play().then(
-      video.addEventListener("canplay", StreamToCanvas2D))
+      video.addEventListener("ptogress", StreamToCanvas2D))
           };
 
     function StreamToCanvas2D() {
