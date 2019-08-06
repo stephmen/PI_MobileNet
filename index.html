@@ -5,7 +5,8 @@
     <title>PI_Mobilenet</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css" />
   </head>
-  <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script>
+  <!-- <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script> -->
+  <script type="text/javascript" src="./http-live-player.js></script>
   <body>
     <video></video>
     <canvas></canvas>
@@ -45,7 +46,7 @@
       video.srcObject = stream;
       video.load()
       video.play().then(
-      video.addEventListener("ptogress", StreamToCanvas2D))
+      video.addEventListener("onpgress", StreamToCanvas2D))
           };
 
     function StreamToCanvas2D() {
