@@ -7,7 +7,7 @@
   </head>
   <!-- <script type="text/javascript" src="https://rawgit.com/131/h264-live-player/master/vendor/dist/http-live-player.js"></script> -->
   <!-- <script type="text/javascript" src="./http-live-player.js></script> -->
-  <script type="text/javascript" src="http-live-player.js">;</script>
+  <!-- <script type="text/javascript" src="http-live-player.js">;</script> -->
   <body>
     <video></video>
     <canvas></canvas>
@@ -15,6 +15,7 @@
     <h1>MobileNet Detect</h1>
     <button>Start</button>
   <script>
+    import { WSAvcPlayer } from "./http-live-player.js";
     const button = document.querySelector("button");
     button.addEventListener("click", function() {
       console.log("button worked");
